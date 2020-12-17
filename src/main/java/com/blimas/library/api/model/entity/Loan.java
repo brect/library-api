@@ -12,6 +12,8 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table
 public class Loan {
 
     @Id
@@ -19,12 +21,17 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String customer;
 
+    @JoinColumn(name = "id_book")
+    @ManyToOne
     private Book book;
 
+    @Column
     private LocalDate loanDate;
 
+    @Column
     private Boolean returned;
 
 }
